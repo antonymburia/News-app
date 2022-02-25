@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best Article website </title>
-        {% endif %}
-    </head>
-    <body>
 
-    </body>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> Welcome to the best Article website </title>
+    {% endif %}
+</head>
+
+<body>
+    <!-- sources section  -->
+    <h3> Sources</h3>
+    <ul>
+        {% for source in sources %}
+        <li>{{ source.name}}</li>
+        <li>{{source.id}}</li>
+        {% endfor %}
+    </ul>
+</body>
+
 </html>
