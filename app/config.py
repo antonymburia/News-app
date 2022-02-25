@@ -1,6 +1,29 @@
-from flask import Flask
+class Config:
+    '''
+    General configuration parent class
+    '''
+    NEWS_API_BASE_URL ='https://newsapi.org/v2/everything?q={}&from=2022-01-25&sortBy=publishedAt&apiKey={}'
+   
+   
 
-# Initializing application
-app = Flask(__name__)
 
-from app import views
+
+class ProdConfig(Config):
+    '''
+    Production  configuration child class
+
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    pass
+
+
+class DevConfig(Config):
+    '''
+    Development  configuration child class
+
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+
+    DEBUG = True
