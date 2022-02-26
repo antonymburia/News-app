@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_sources
+from .request import article_source, get_headlines, get_sources
 
 # Views
 @app.route('/')
@@ -11,8 +11,10 @@ def index():
     '''
     sources_display = get_sources()
     print(sources_display)
+    articles = article_source(id)
     title = 'Home - Welcome to The best News Website '
-    return render_template('index.html', title = title, sources = sources_display)
+    headlines = get_headlines()
+    return render_template('index.html', title = title, sources = sources_display, articles = articles,headlines= headlines)
 
 @app.route('/article/<article_id>')
 def article(article_id):
