@@ -32,13 +32,13 @@ def get_sources():
 
 def process_results(source_list):
   '''
-  Function  that processes the movie result and transform them to a list of Objects
+  Function  that processes the article result and transform them to a list of Objects
 
   Args:
-      movie_list: A list of dictionaries that contain movie details
+      article_list: A list of dictionaries that contain article details
 
   Returns :
-      movie_results: A list of movie objects
+      article_results: A list of article objects
   '''
 
   source_results = []
@@ -53,7 +53,28 @@ def process_results(source_list):
       source_object = Source(id,name,description,url)
       source_results.append(source_object)
 
-  return source_results
+  
 
 
+  
+
+  get_article_details_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+
+  with urllib.request.urlopen(get_article_details_url) as url:
+    article_details_data = url.read()
+    article_details_response = json.loads(article_details_data)
+
+    article_object = None
+    if article_details_response:
+      id = article_details_response.get('id')
+      title = article_details_response.get('title')
+      author = article_details_response.get('author')
+      time = article_details_response.get('time')
+      image = article_details_response.get('image')
+      url = article_details_response.get('url')
+      content = article_details_response.get('content')
+
+      article_object = Article(id,title,author,time,image,url,content)
+
+  return source_results, article_object
 
