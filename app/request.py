@@ -1,10 +1,11 @@
 from app import app
 import urllib.request,json
-from .models import article, source,headline
+from .models import  models
 
 
-Article = article.Article
-Source = source.Source
+
+Source = models.Source
+Article = models.Article
 
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
@@ -55,8 +56,7 @@ def process_results(source_list):
 
   return source_results
 
-
-def get_headlines():
+def article_source():
     '''
     function that gets the response to the category json
     '''
@@ -73,37 +73,44 @@ def get_headlines():
             get_headlines_results = process_articles_results(get_headlines_list)
 
     return get_headlines_results
-def article_source(id):
-    id = 'abc-news'
-    article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
-    # print(article_url)
-    with urllib.request.urlopen(article_url) as url:
-        article_data = url.read()
-        article_response = json.loads(article_data)
-
-        article_results = None
-
-        if article_response['articles']:
-            article_list = article_response['articles']
-            article_results = process_articles_results(article_list)
 
 
-    return article_results
+# def article_source(id):
+#     for source in get_sources():
+#       id = get_sources()
+#       return id
+#     article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id, api_key)
+#     # print(article_url)
+#     with urllib.request.urlopen(article_url) as url:
+#         article_data = url.read()
+#         article_response = json.loads(article_data)
+
+#         article_results = None
+
+#         if article_response['articles']:
+#             article_list = article_response['articles']
+#             article_results = process_articles_results(article_list)
+
+            
+
+
+#     return article_results
  
 
-def process_articles_results(news):
+def process_articles_results(articles):
     '''
     function that processes the json files of articles from the api key
     '''
     article_results = []
-    for article in news:
+    for article in articles:
         author = article.get('author')
         description = article.get('description')
         date = article.get('publishedAt')
-        url = article.get('urlToImage')
-        image = article.get('url')
+        url = article.get('url')
+        image = article.get('urlToImage')
         title = article.get ('title')
         content= article.get('content')
+        
         if url:
             article_objects = Article(author,description,date,image,url,title,content)
             article_results.append(article_objects)
