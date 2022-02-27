@@ -1,17 +1,16 @@
-from app import app
 import urllib.request,json
-from .models import  models
+from .models import Source, Article, Articles
 
-
-
-Source = models.Source
-Article = models.Article
 
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
+# Getting the movie base url
+base_url = None
 
-#getting base URL
-base_url = app.config["NEWS_API_BASE_URL"]
+def configure_request(app):
+  global api_key,base_url
+  api_key = app.config['NEWS_API_KEY']
+  base_url = app.config["NEWS_API_BASE_URL"]
 
 def get_sources():
   '''
@@ -102,7 +101,7 @@ def process_articles_results(articles):
     for article in articles:
         author = article.get('author')
         description = article.get('description')
-        date = article.get('publishedAt')
+        time = article.get('publishedAt')
         url = article.get('url')
         image = article.get('urlToImage')
         title = article.get ('title')
@@ -110,7 +109,7 @@ def process_articles_results(articles):
         source = article.get('source')
         
         if url:
-            article_objects = Article(author,description,date,image,url,title,content,source)
+            article_objects = Article(author,description,time,image,url,title,content,source)
             article_results.append(article_objects)
 
     return article_results
