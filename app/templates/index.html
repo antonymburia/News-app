@@ -1,6 +1,7 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
+{% import 'source.html' as macro%}
 {% block content %}
+
 
 <div class="container">
   <div class="row">
@@ -9,13 +10,13 @@
 
       <div class="">
         
-
+        {% for source in sources %}
         <!-- articles -->
         {% for article in articles %}
-
+        <h4>{{source.name}}</h4>
         <b>
           <h3>
-            <a href="{{article.image}}">
+            <a href="/article/{{source.id}}">
               <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
 
               {{article.url }} <br>
@@ -34,6 +35,7 @@
 
 
         
+        {% endfor %}
         {% endfor %}
       </div>
     </div>

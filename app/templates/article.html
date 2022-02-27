@@ -2,15 +2,20 @@
 {% import 'macros.html' as macro%}
 
 {% block content %}
-<h3>Article</h3>
-<!-- {% for source in sources %} -->
+<h3>Article</h3>{{id}}
+
+{% for article in articles %}
 
 
 <ul>
 </ul>
 
-<li>{{source.id}}</li>
-<li>{{article.author}}</li>
+<li>{{article.name}}</li>
+<li>{{article.content}}</li>
+{{article.author}}
+<a href="{{article.url}} ">
+  <p class="card-text badge badge-success ">Read More..</p>
+</a>
 
 <!-- {% endfor %} -->
 {% endblock %}

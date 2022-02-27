@@ -13,7 +13,7 @@ api_key = app.config['NEWS_API_KEY']
 #getting base URL
 base_url = app.config["NEWS_API_BASE_URL"]
 
-def get_sources(name):
+def get_sources():
   '''
     Function that gets the json response to our url request
   '''
@@ -75,26 +75,23 @@ def article_source():
     return get_articles_results
 
 
-# def article_source(id):
-#     for source in get_sources():
-#       id = get_sources()
-#       return id
-#     article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id, api_key)
-#     # print(article_url)
-#     with urllib.request.urlopen(article_url) as url:
-#         article_data = url.read()
-#         article_response = json.loads(article_data)
+def get_articles(id):
+    article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id, api_key)
+    # print(article_url)
+    with urllib.request.urlopen(article_url) as url:
+        article_data = url.read()
+        article_response = json.loads(article_data)
 
-#         article_results = None
+        article_results = None
 
-#         if article_response['articles']:
-#             article_list = article_response['articles']
-#             article_results = process_articles_results(article_list)
+        if article_response['articles']:
+            article_list = article_response['articles']
+            article_results = process_articles_results(article_list)
 
             
 
 
-#     return article_results
+    return article_results
  
 
 def process_articles_results(articles):
