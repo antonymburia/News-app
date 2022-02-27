@@ -1,1 +1,19 @@
-<h1> Hello Article {{ id }} </h1>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+    {% block content %}
+    
+ {% for source in sources %}
+    
+    <h3>Sources</h3>
+    <ul>
+        {{ macro.displaySourcesList(source_results_list)}} l k
+    </ul>
+    <li>{{source.name}}</li>
+    <li>{{source.id}}</li>
+     
+    {% endfor %}
+    {% endblock %}
+</body>
+
+</html>

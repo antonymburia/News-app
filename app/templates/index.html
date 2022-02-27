@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to the best Article website </title>
-    {% endif %}
-</head>
+{% for source in sources %}
+{{source.name}}
+{{source.id}}
+{% for article in articles %}
 
-<body>
-    <!-- sources section  -->
-    <h3> Sources</h3>
-    <ul>
-        
-        {% for source in sources %}
-       <br>
-        <li>{{source.name}}</li><br>
-        <!-- <li>{{source.title}}</li> -->
-        <!-- <li>{{source.description}}</li> <br> -->
+<img src="{{article.time}}" alt="{{article.time}}">
+{{article.author}} <br>
+{{article.url}} htyt <br>
+{{article.image}} <br>
+<li>{{article.title}} <br></li>
+{{article.content}} <br>
+{{article.description}} <br>
 
-        {% for article in article %}
-        <img src="{{article.time}}" alt="{{article.time}}">
-        {{article.author}} <br>
-        {{article.url}} htyt <br>
-        {{article.image}} <br>
-        <li>{{article.title}} <br></li>
-        {{article.content}} <br>
-        {{article.description}}
-        
-        <!-- {{article.id}} -->
-        {% endfor %}
-        {% endfor %}
-    </ul>
-</body>
+{{article.id}} <br>
 
-</html>
+{% endfor %}
+{% endfor %}
+
+{% endblock %}

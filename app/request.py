@@ -60,19 +60,19 @@ def article_source():
     '''
     function that gets the response to the category json
     '''
-    get_headlines_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
-    print(get_headlines_url)
-    with urllib.request.urlopen(get_headlines_url) as url:
-        get_headlines_data = url.read()
-        get_headlines_response = json.loads(get_headlines_data)
+    get_articles_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
+    print(get_articles_url)
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
 
-        get_headlines_results = None
+        get_articles_results = None
 
-        if get_headlines_response['articles']:
-            get_headlines_list = get_headlines_response['articles']
-            get_headlines_results = process_articles_results(get_headlines_list)
+        if get_articles_response['articles']:
+            get_articles_list = get_articles_response['articles']
+            get_articles_results = process_articles_results(get_articles_list)
 
-    return get_headlines_results
+    return get_articles_results
 
 
 # def article_source(id):
@@ -110,9 +110,10 @@ def process_articles_results(articles):
         image = article.get('urlToImage')
         title = article.get ('title')
         content= article.get('content')
+        source = article.get('source')
         
         if url:
-            article_objects = Article(author,description,date,image,url,title,content)
+            article_objects = Article(author,description,date,image,url,title,content,source)
             article_results.append(article_objects)
 
     return article_results
