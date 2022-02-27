@@ -19,9 +19,9 @@ The application requires the following installations to run
 * install flask
 * run ./stash.sh to view the articles on the browser
 ## Technologies Used
-* Python
+* Python 
 * flask
-* Heroku
+* heroku
 ## User Instructions 
 As a user
 * see different news sources
