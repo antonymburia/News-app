@@ -2,8 +2,8 @@
 {% import 'source.html' as macro%}
 
 {% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 {% block content %}
 <!-- Styles block -->
@@ -15,11 +15,11 @@
   <div class="child">
     <div class="container">
       <div class="row">
-  
+
         <div class="col">
-  
+
           <div class="">
-  
+
             {% for source in sources %}
             <!-- articles -->
             {% for article in articles %}
@@ -28,23 +28,25 @@
               <h3>
                 <a href="/article/{{source.id}}">
                   <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
-  
+
                   {{article.url }} <br>
                 </a>
               </h3>
-  
+
             </b>
             <!-- {{article.content}} <br> -->
-            {{ article.title }} <br>
-            {{article.content}} <br>
+            <i>
+              {{ article.title }} <br>
+              {{article.content}} <br>
+            </i>
             <br>
-  
+
             <p><b>
                 This article was posted by {{article.source.name}} on {{article.author}}<br>
               </b></p>
-  
-  
-  
+
+
+
             {% endfor %}
             {% endfor %}
           </div>
