@@ -1,28 +1,26 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
+{% import 'macros.html' as macro %}
+
 
 {% block content %}
-<!-- Styles block -->
 
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
 <!-- Content block -->
 <div class="container">
-<h2><b>More Articles from the Same Source</b></h2>
+  <h2><b>More Articles from the Same Source</b></h2>
   <div class="row">
     {% for article in articles %}
     <div class="col-md-4">
-      <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
-      <h4><b>{{article.url}}</b></h4>
-      <!-- <li>{{article.name}}</li> <br> -->
-      <li>{{article.content}}</li> <br>
-      <p>
-        This article was posted by {{article.source.name}} on {{article.author}}<br>
-      <a href="{{article.image}} ">
-        Read More..
-      </a>
+      <div class="article">
+        <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
+        <h4><b>{{article.url}}</b></h4>
+        <!-- <li>{{article.name}}</li> <br> -->
+        <li>{{article.content}}</li> <br>
+        <p>
+          This article was posted by {{article.source.name}} on {{article.author}}<br>
+          <a href="{{article.image}} ">
+            Read More..
+          </a>
+      </div>
 
     </div>
     {% endfor %}

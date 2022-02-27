@@ -1,42 +1,47 @@
 {% extends 'base.html'%}
 {% import 'source.html' as macro%}
 {% block content %}
+<!-- Styles block -->
 
 
-<div class="container">
-  <div class="row">
-   
-    <div class="col">
+<!-- Content block -->
 
-      <div class="">
-        
-        {% for source in sources %}
-        <!-- articles -->
-        {% for article in articles %}
-        <h4>{{source.name}}</h4>
-        <b>
-          <h3>
-            <a href="/article/{{source.id}}">
-              <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
+<div class="all">
+  <div class="container">
+    <div class="row">
 
-              {{article.url }} <br>
-            </a>
-          </h3>
+      <div class="col">
 
-        </b>
-        <!-- {{article.content}} <br> -->
-        {{ article.title }} <br>
-        {{article.content}} <br>
-        <br>
+        <div class="">
 
-        <p><b>
-            This article was posted by {{article.source.name}} on {{article.author}}<br>
-          </b></p>
+          {% for source in sources %}
+          <!-- articles -->
+          {% for article in articles %}
+          <h4><b>Source:{{source.name}}</b></h4>
+          <b>
+            <h3>
+              <a href="/article/{{source.id}}">
+                <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
+
+                {{article.url }} <br>
+              </a>
+            </h3>
+
+          </b>
+          <!-- {{article.content}} <br> -->
+          {{ article.title }} <br>
+          {{article.content}} <br>
+          <br>
+
+          <p><b>
+              This article was posted by {{article.source.name}} on {{article.author}}<br>
+            </b></p>
 
 
-        
-        {% endfor %}
-        {% endfor %}
+
+          {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
