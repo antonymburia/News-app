@@ -1,17 +1,10 @@
 {% macro displaySourcesList(source_results_list) %}
 {% for source in sources %}
-<h3>Sources</h3>
-    <ul>
-        {{ macro.displaySourcesList(source_results_list)}} l k
-    </ul>
-    <li>{{source.name}}</li>
-    <li>{{source.id}}</li>
- 
   {% for article in articles%}
-  <img src="{{ article.time }}" alt="{{ article.title }} " >
+  <br><img src="{{ article.time }}" alt="{{ article.title }} " >
   <li class="text-center">
-    <a href="/article/{{article.id}}">
-      {{ article.author}} vnvn
+    <a href="/article/{{source.id}}">
+      {{ article.author}} 
     </a>
   </li>
   

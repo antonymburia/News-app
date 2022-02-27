@@ -13,7 +13,7 @@ api_key = app.config['NEWS_API_KEY']
 #getting base URL
 base_url = app.config["NEWS_API_BASE_URL"]
 
-def get_sources():
+def get_sources(name):
   '''
     Function that gets the json response to our url request
   '''

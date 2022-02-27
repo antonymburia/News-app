@@ -3,26 +3,26 @@ from app import app
 from .request import get_sources,article_source
 
 #Views
-@app.route('/article/<id>')
-def index():
+@app.route('/article/<name>')
+def article(name):
 
     '''
     View root page function that returns the index page and its data
     '''
-    sources_display = get_sources()
+    sources_display = get_sources(name)
     print(sources_display)
     article = article_source()
-    title = 'Home - Welcome to The best News Website '
     
-    return render_template('article.html', title = title, sources = sources_display, article = article)
+    
+    return render_template('article.html', sources = sources_display, article = article)
 
 @app.route('/')
-def article():
+def index():
 
     '''
     View article page function that returns the article details page and its data
     '''
     articles = article_source()
-    sources = get_sources()
+    sources = get_sources(id)
 
     return render_template('index.html',articles = articles,sources = sources)

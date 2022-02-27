@@ -3,19 +3,24 @@
 {% block content %}
 
 {% for source in sources %}
-{{source.name}}
-{{source.id}}
+{{source.name}} <br>
+{{source.id}} <br>
 {% for article in articles %}
 
-<img src="{{article.time}}" alt="{{article.time}}">
-{{article.author}} <br>
-{{article.url}} htyt <br>
-{{article.image}} <br>
-<li>{{article.title}} <br></li>
-{{article.content}} <br>
-{{article.description}} <br>
+<a href="{{article.image}}">
+  <img src="{{article.time}}" alt="{{article.time}}"><br>
+  
 
-{{article.id}} <br>
+   <br>
+ 
+    {{ article.title }} <br>
+  </a>
+
+  {{article.content}} <br>
+  {{article.description}} <br>
+
+  {{article.name}} <br>
+
 
 {% endfor %}
 {% endfor %}
