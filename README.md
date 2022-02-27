@@ -13,7 +13,7 @@ The application requires the following installations to run
 * pip
 * flask
 
-* Clone the project repository from https://github.com/antonymburia/News-app.gitpassword-locker.git
+* Clone the project repository from https://github.com/antonymburia/News-app.git
 * Open the project folder on terminal
 * create virtual environment
 * install flask
