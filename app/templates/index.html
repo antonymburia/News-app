@@ -2,27 +2,44 @@
 {% import 'macros.html' as macro%}
 {% block content %}
 
-{% for source in sources %}
-{{source.name}} <br>
-{{source.id}} <br>
-{% for article in articles %}
+<div class="container">
+  <div class="row">
+   
+    <div class="col">
 
-<a href="{{article.image}}">
-  <img src="{{article.time}}" alt="{{article.time}}"><br>
-  
+      <div class="">
+        
 
-   <br>
- 
-    {{ article.title }} <br>
-  </a>
+        <!-- articles -->
+        {% for article in articles %}
 
-  {{article.content}} <br>
-  {{article.description}} <br>
+        <b>
+          <h3>
+            <a href="{{article.image}}">
+              <img src="{{article.time}}" alt="{{article.time}}" width="100%"><br>
 
-  {{article.name}} <br>
+              {{article.url }} <br>
+            </a>
+          </h3>
+
+        </b>
+        <!-- {{article.content}} <br> -->
+        {{ article.title }} <br>
+        {{article.content}} <br>
+        <br>
+
+        <p><b>
+            This article was posted by {{article.source.name}} on {{article.author}}<br>
+          </b></p>
 
 
-{% endfor %}
-{% endfor %}
+        
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
