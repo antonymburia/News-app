@@ -1,4 +1,4 @@
-# Pass Lock
+# TRending News
 
 
 ## Author
